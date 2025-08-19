@@ -24,7 +24,7 @@ const register = async (req, res) => {
       password: hashed,
     });
 
-    res.status(201).json(resObject.success("User Registered", user));
+    res.status(201).json(resObject.success("User Registered"));
   } catch (error) {
     errorHandler(error, res);
   }
@@ -49,7 +49,7 @@ const login = async (req, res) => {
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
 
     res.cookie("token", token);
-    res.status(200).json(resObject.success("Login Successful", user));
+    res.status(200).json(resObject.success("Login Successful"));
   } catch (error) {
     errorHandler(error, res);
   }
